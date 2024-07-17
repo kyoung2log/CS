@@ -2,7 +2,7 @@ class HashTable<K, V> {
   private table: Map<K, V>[];
 
   constructor(private size: number) {
-    this.table = new Array(size).fill(new Map<K, V>());
+    this.table = new Array(size).map(() => new Map<K, V>());
   }
 
   private hash(key: K): number {
