@@ -1,10 +1,11 @@
-import Node from './node';
+import { Node } from './Node';
 
 class Graph {
   // 모든 노드 저장
   nodes: Node[] = [];
   // 노드를 인접리스트로 저장, 인덱스 시그니쳐
   adjacencyList: { [key: number]: Node[] } = {};
+  // adjacencyMatrix
 
   // 노드 추가
   addNode(node: Node) {
@@ -50,6 +51,10 @@ class Graph {
     this.printEdges();
   }
 
+  // 그래프 순회
+  bfs(startNode: Node) {}
+  dfs(startNode: Node) {}
+
   private printNodes() {
     console.log(this.nodes);
   }
@@ -58,3 +63,5 @@ class Graph {
     console.log(this.adjacencyList);
   }
 }
+
+const graph = new Graph();
