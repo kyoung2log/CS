@@ -1,10 +1,10 @@
-import { TreeNode } from './Node';
+import { TNode } from './Node';
 
 class Tree {
-  root?: TreeNode;
+  root?: TNode;
 
   // 노드 탐색
-  findNode(value: number, targetNode?: TreeNode): TreeNode | undefined {
+  findNode(value: number, targetNode?: TNode): TNode | undefined {
     // 루트 노드가 없을 경우 undefined 반환
     const rootNode = targetNode ?? this.root;
 
@@ -23,7 +23,7 @@ class Tree {
 
   // 노드 추가
   addNode(value: number, parentValue?: number) {
-    const newNode = new TreeNode(value);
+    const newNode = new TNode(value);
 
     if (!this.root) {
       this.root = newNode;

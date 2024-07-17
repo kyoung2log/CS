@@ -9,12 +9,24 @@ export class Node {
   }
 }
 
-export class TreeNode extends Node {
-  children: TreeNode[];
-  parent?: TreeNode;
+export class TNode extends Node {
+  children: TNode[];
+  parent?: TNode;
 
   constructor(value: number) {
     super(value);
     this.children = [];
+  }
+}
+
+export class BTNode extends TNode {
+  left: TNode | null;
+  right: TNode | null;
+
+  constructor(value: number) {
+    super(value);
+
+    this.left = null;
+    this.right = null;
   }
 }
