@@ -8,7 +8,10 @@ class Tree {
     // 루트 노드가 없을 경우 undefined 반환
     const rootNode = targetNode ?? this.root;
 
-    if (!rootNode) return undefined;
+    if (!rootNode) {
+      this.printNotFound();
+      return undefined;
+    }
 
     // 현재 노드의 값과 찾고자 하는 값이 일치할 경우 현재 노드 반환
     if (value === rootNode.value) return rootNode;
@@ -18,6 +21,8 @@ class Tree {
       const result = this.findNode(value, child);
       if (result) return result;
     }
+
+    this.printNotFound();
     return undefined;
   }
 
@@ -36,7 +41,7 @@ class Tree {
       parent.children.push(newNode);
       newNode.parent = parent;
     } else {
-      console.log('404');
+      this.printNotFound();
     }
   }
 
@@ -45,7 +50,7 @@ class Tree {
     const deleteNode = this.findNode(value);
 
     if (!deleteNode) {
-      console.log('404');
+      this.printNotFound();
       return;
     }
 
@@ -61,12 +66,21 @@ class Tree {
     deleteNode.children = [];
   }
 
-  getParentNode() {}
-  getLeafNode() {}
-  preOrder() {}
-  inOrder() {}
-  postOrder() {}
-  levelOrder() {}
+  // 부모노드 탐색
+  getParentNode(value: number): TNode | undefined {
+    const targetNode = this.findNode(value);
+    if (!targetNode || targetNode.parent) {
+      this.printNotFound();
+      return undefined;
+    }
+
+    return targetNode.parent;
+  }
+
+  // 노드를 찾지 못함
+  private printNotFound() {
+    console.log('non found');
+  }
 }
 
 const tree = new Tree();
