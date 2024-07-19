@@ -20,13 +20,14 @@ export class TNode extends Node {
 }
 
 export class BTNode extends TNode {
-  left: TNode | null;
-  right: TNode | null;
+  left: BTNode | undefined;
+  right: BTNode | undefined;
+  children: BTNode[];
 
   constructor(value: number) {
     super(value);
 
-    this.left = null;
-    this.right = null;
+    this.left = undefined;
+    this.right = undefined;
   }
 }
